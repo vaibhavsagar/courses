@@ -88,6 +88,11 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'superlists', 'static'),
 )
 
+AUTH_USER_MODEL = 'accounts.User'
+AUTHENTICATION_BACKENDS = (
+    'accounts.authentication.PersonaAuthenticationBackend',
+)
+
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
