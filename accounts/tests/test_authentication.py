@@ -1,3 +1,4 @@
+import logging
 from unittest.mock import patch
 from django.conf import settings
 from django.test import TestCase
@@ -37,7 +38,10 @@ class AuthenticateTest(TestCase):
         self.assertIsNone(user)
 
     def test_finds_existing_user_with_email(self, mock_post):
-        mock_post.return_value.json.return_value = {'status': 'okay', 'email': 'a@b.com'}
+        mock_post.return_value.json.return_value = {
+            'status': 'okay',
+            'email': 'a@b.com'
+        }
         actual_user = User.objects.create(email='a@b.com')
         found_user = self.backend.authenticate('an assertion')
         self.assertEqual(found_user, actual_user)
@@ -47,6 +51,21 @@ class AuthenticateTest(TestCase):
         found_user = self.backend.authenticate('an assertion')
         new_user = User.objects.get(email='a@b.com')
         self.assertEqual(found_user, new_user)
+
+    def test_logs_non_okay_responses_from_persona(self, mock_post):
+        response_json = {
+            'status': 'not okay', 'reason': 'eg, audience mismatch'
+        }
+        mock_post.return_value.ok = True
+        mock_post.return_value.json.return_value = response_json
+
+        logger = logging.getLogger('accounts.authentication')
+        with patch.object(logger, 'warning') as mock_log_warning:
+            self.backend.authenticate('an assertion')
+
+        mock_log_warning.assert_called_once_with(
+            'Persona says no. Json was {}'.format(response_json)
+        )
 
 
 class GetUserTest(TestCase):
