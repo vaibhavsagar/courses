@@ -61,7 +61,7 @@ class ListPage(object):
         self.get_share_box().send_keys(email + '\n')
         self.test.wait_for(lambda: self.test.assertIn(
             email,
-            [item.text for item in self.get_shared_with_list]
+            [item.text for item in self.get_shared_with_list()]
         ))
 
     def get_item_input(self):
