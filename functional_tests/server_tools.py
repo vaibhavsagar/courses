@@ -1,12 +1,13 @@
 from os import path
 import subprocess
 THIS_FOLDER = path.dirname(path.abspath(__file__))
+FAB_PATH = r'C:/Users/Vaibhav/Documents/python/envs/py27/Scripts/fab'
 
 
 def create_session_on_server(host, email):
     return subprocess.check_output(
         [
-            r'C:/Users/Vaibhav/Documents/python/envs/py27/Scripts/fab',
+            FAB_PATH,
             'create_session_on_server:email={}'.format(email),
             '--host={}'.format(host),
             '--hide=everything,status',
@@ -18,7 +19,7 @@ def create_session_on_server(host, email):
 def reset_database(host):
     subprocess.check_call(
         [
-            r'C:/Users/Vaibhav/Documents/python/envs/py27/Scripts/fab',
+            FAB_PATH,
             'reset_database',
             '--host={}'.format(host),
         ],
