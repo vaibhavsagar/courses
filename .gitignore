@@ -2,3 +2,6 @@
 *.classpath
 *.jar
 *.class
+*.project
+*.properties
+*.prefs
