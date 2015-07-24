@@ -7,3 +7,6 @@
 *.prefs
 *.history
 *.sbt
+*.xml
+*.xsl
+*.css
