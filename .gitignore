@@ -11,3 +11,6 @@
 *.xsl
 *.css
 *.log
+CourseraHttp.scala
+GradingFeedback.scala
+ProgFunBuild.scala
