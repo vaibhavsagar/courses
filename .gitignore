@@ -14,3 +14,6 @@
 CourseraHttp.scala
 GradingFeedback.scala
 ProgFunBuild.scala
+RecordingLogger.scala
+RichJsValue.scala
+ScalaTestRunner.scala
