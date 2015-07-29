@@ -17,3 +17,5 @@ ProgFunBuild.scala
 RecordingLogger.scala
 RichJsValue.scala
 ScalaTestRunner.scala
+Settings.scala
+StyleChecker.scala
