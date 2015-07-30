@@ -19,3 +19,4 @@ RichJsValue.scala
 ScalaTestRunner.scala
 Settings.scala
 StyleChecker.scala
+package.scala
