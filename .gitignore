@@ -23,3 +23,5 @@ package.scala
 linuxwords.txt
 inputs
 output
+data
+out
