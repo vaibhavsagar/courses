@@ -21,6 +21,7 @@ Settings.scala
 StyleChecker.scala
 package.scala
 linuxwords.txt
+copy-resources
 inc_compile
 inputs
 output
