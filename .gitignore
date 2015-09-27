@@ -5,8 +5,10 @@
 *.log
 *.project
 *.settings
+
 */project/
 */target/
 */bin/
 */web-ui/
+
 package.scala
