@@ -73,8 +73,11 @@ the contents of c
 -- /Tip:/ use @getArgs@ and @run@
 main ::
   IO ()
-main =
-  error "todo: Course.FileIO#main"
+main = do
+  args     <- getArgs
+  let (h:._) = args
+  (_,contents) <- getFile h
+  run contents
 
 type FilePath =
   Chars
@@ -83,31 +86,39 @@ type FilePath =
 run ::
   Chars
   -> IO ()
-run =
-  error "todo: Course.FileIO#run"
+run contents = do
+  let paths = lines contents
+  ws <- getFiles paths
+  printFiles ws
+
 
 getFiles ::
   List FilePath
   -> IO (List (FilePath, Chars))
-getFiles =
-  error "todo: Course.FileIO#getFiles"
+getFiles Nil = return Nil
+getFiles (h:.t) = do
+  value  <- getFile  h
+  values <- getFiles t
+  return (value :. values)
+
 
 getFile ::
   FilePath
   -> IO (FilePath, Chars)
-getFile =
-  error "todo: Course.FileIO#getFile"
+getFile path = do
+  contents <- readFile path
+  return (path, contents)
 
 printFiles ::
   List (FilePath, Chars)
   -> IO ()
-printFiles =
-  error "todo: Course.FileIO#printFiles"
+printFiles Nil    = return ()
+printFiles ((path,contents):.t) = printFile path contents >>= \_ -> printFiles t
 
 printFile ::
   FilePath
   -> Chars
   -> IO ()
-printFile =
-  error "todo: Course.FileIO#printFile"
-
+printFile path chars = do
+  putStrLn $ "============ " ++ path
+  putStrLn chars
