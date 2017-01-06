@@ -233,9 +233,9 @@ jsonObject ::
   Parser Assoc
 jsonObject = betweenSepbyComma '{' '}' keyValue
   where keyValue = do
-        key   <- jsonString <* spaces <* charTok ':'
-        value <- jsonValue
-        return (key, value)
+          key   <- jsonString <* spaces <* charTok ':'
+          value <- jsonValue
+          return (key, value)
 
 -- | Parse a JSON value.
 --
