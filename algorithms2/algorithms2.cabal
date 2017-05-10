@@ -14,8 +14,6 @@ extra-source-files:  README.md
 cabal-version:       >=1.10
 
 library
-  hs-source-dirs:      .
-  exposed-modules:     Lib
   build-depends:       base >= 4.7 && < 5
                      , hashtables
                      , memoize
