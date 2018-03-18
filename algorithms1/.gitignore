@@ -1,0 +1,5 @@
+*.zip
+*.hi
+*.o
+.ipynb_checkpoints
+.stack-work/
